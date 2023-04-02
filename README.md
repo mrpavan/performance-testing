@@ -33,52 +33,52 @@ Performance & Load Testing your web services is crucial with APIs becoming more 
 
 3. To run the tests ``` k6 run script.js``` where script.js is the file name in step 2 above.
 
-4. For running multiple users or simultaneous users use ``` k6 run --vus 10 --duration 30s script.js``` this refers to 10 users for the duration of 30 seconds. Add or change numbers based on what you are trying to acheive.
+4. For running multiple users or simultaneous users use ``` k6 run --vus 5 --duration 30s script.js``` this refers to 5 virtual users for the duration of 30 seconds. Add or change numbers based on what you are trying to acheive.
 
 4. Results are displayed upon compeletion with required metrices for users broadly classifed into 2
     - As summary statistics, in an end-of-test summary report.
     - In granular details, with measurements for every data point across test (and timestamps)
 5. Sample Result
     ```
-                k6 run script.js  
+    k6 run script.js               
 
-                /\      |‾‾| /‾‾/   /‾‾/   
-            /\  /  \     |  |/  /   /  /    
-            /  \/    \    |     (   /   ‾‾\  
-        /          \   |  |\  \ |  (‾)  | 
-        / __________ \  |__| \__\ \_____/ .io
+            /\      |‾‾| /‾‾/   /‾‾/   
+        /\  /  \     |  |/  /   /  /    
+        /  \/    \    |     (   /   ‾‾\  
+    /          \   |  |\  \ |  (‾)  | 
+    / __________ \  |__| \__\ \_____/ .io
 
-        execution: local
-            script: script_put.js
-            output: -
+    execution: local
+        script: script.js
+        output: -
 
-        scenarios: (100.00%) 1 scenario, 1 max VUs, 35s max duration (incl. graceful stop):
-                * default: 1 looping VUs for 5s (gracefulStop: 30s)
-
-
-            ✓ status is 200
-
-            checks.........................: 100.00% ✓ 3        ✗ 0  
-            data_received..................: 8.1 kB  1.5 kB/s
-            data_sent......................: 854 B   160 B/s
-            http_req_blocked...............: avg=38.1ms   min=1µs      med=1µs      max=114.31ms p(90)=91.44ms  p(95)=102.88ms
-            http_req_connecting............: avg=5.12ms   min=0s       med=0s       max=15.36ms  p(90)=12.28ms  p(95)=13.82ms 
-        ✗ http_req_duration..............: avg=734.85ms min=658.14ms med=707.15ms max=839.25ms p(90)=812.83ms p(95)=826.04ms
-            { expected_response:true }...: avg=734.85ms min=658.14ms med=707.15ms max=839.25ms p(90)=812.83ms p(95)=826.04ms
-        ✓ http_req_failed................: 0.00%   ✓ 0        ✗ 3  
-            http_req_receiving.............: avg=137.33µs min=95µs     med=112µs    max=205µs    p(90)=186.4µs  p(95)=195.7µs 
-            http_req_sending...............: avg=270.99µs min=180µs    med=209µs    max=424µs    p(90)=381µs    p(95)=402.49µs
-            http_req_tls_handshaking.......: avg=19.12ms  min=0s       med=0s       max=57.38ms  p(90)=45.9ms   p(95)=51.64ms 
-            http_req_waiting...............: avg=734.44ms min=657.83ms med=706.76ms max=838.72ms p(90)=812.33ms p(95)=825.52ms
-            http_reqs......................: 3       0.563446/s
-            iteration_duration.............: avg=1.77s    min=1.65s    med=1.82s    max=1.83s    p(90)=1.83s    p(95)=1.83s   
-            iterations.....................: 3       0.563446/s
-            vus............................: 1       min=1      max=1
-            vus_max........................: 1       min=1      max=1
+    scenarios: (100.00%) 1 scenario, 5 max VUs, 33s max duration (incl. graceful stop):
+            * default: 5 looping VUs for 3s (gracefulStop: 30s)
 
 
-        running (05.3s), 0/1 VUs, 3 complete and 0 interrupted iterations
-        default ✓ [======================================] 1 VUs  5s
+        ✓ is status 200
+
+        checks.........................: 100.00% ✓ 229       ✗ 0  
+        data_received..................: 171 kB  51 kB/s
+        data_sent......................: 11 kB   3.2 kB/s
+        http_req_blocked...............: avg=5.93ms   min=0s      med=1µs     max=274.66ms p(90)=1µs      p(95)=2µs     
+        http_req_connecting............: avg=307.8µs  min=0s      med=0s      max=14.61ms  p(90)=0s       p(95)=0s      
+        http_req_duration..............: avg=63.94ms  min=20.68ms med=27.11ms max=631.63ms p(90)=225.53ms p(95)=265.03ms
+        { expected_response:true }...: avg=63.94ms  min=20.68ms med=27.11ms max=631.63ms p(90)=225.53ms p(95)=265.03ms
+        http_req_failed................: 0.00%   ✓ 0         ✗ 229
+        http_req_receiving.............: avg=2.63ms   min=31µs    med=1.69ms  max=150.95ms p(90)=4.16ms   p(95)=4.98ms  
+        http_req_sending...............: avg=125.95µs min=25µs    med=85µs    max=3.84ms   p(90)=195µs    p(95)=256.2µs 
+        http_req_tls_handshaking.......: avg=4.11ms   min=0s      med=0s      max=192.15ms p(90)=0s       p(95)=0s      
+        http_req_waiting...............: avg=61.19ms  min=19.64ms med=24.84ms max=483.35ms p(90)=221.64ms p(95)=264.26ms
+        http_reqs......................: 229     68.051105/s
+        iteration_duration.............: avg=70.72ms  min=20.83ms med=27.3ms  max=632.3ms  p(90)=230.74ms p(95)=274.83ms
+        iterations.....................: 229     68.051105/s
+        vus............................: 5       min=5       max=5
+        vus_max........................: 5       min=5       max=5
+
+
+    running (03.4s), 0/5 VUs, 229 complete and 0 interrupted iterations
+    default ✓ [======================================] 5 VUs  3s
     ```
 
 6. There are some samples for http methods like get, put, post and one may refer to code in k6 folder of this repo. I have used [dummyjson.com](https://dummyjson.com/) for api requests and response assertions and request url's may be updated to suit your needs before executing the scripts. Feel free to modify and use it as needed.
