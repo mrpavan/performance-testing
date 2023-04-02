@@ -1,5 +1,5 @@
 # Performance-Testing
-Performance & Load Testing your web services is crucial with APIs becoming more prevalent in usage and required through testing for handling adhoc and busrt loads thoughout the product lifecycle. K6.io is one such tool that provides basic to advance testing sceraios for the developers to test their API's and identify any potential blockages across the service by wrting tests in their well known scripting language javascript.  
+Performance & Load Testing your web services is crucial with APIs becoming more prevalent in usage and required through testing for handling adhoc and busrt loads thoughout the product lifecycle. K6.io is one such tool from well known opensource team graphna labs that enables basic to advance testing sceraios for the developers to test their API's and identify any potential blockages across the service by writing tests in their well known scripting language 'javascript'.  
 
 1. How to use?
 - for mac os with homebrew package manager 
@@ -17,7 +17,7 @@ Performance & Load Testing your web services is crucial with APIs becoming more 
  - refer k6 documentation for additional options [k6](https://k6.io/docs/get-started/installation/)
 
  2. Get started
- To perform testing on your web application & apis; create new script file for example ***script.js*** and use below sampel code  
+ To perform testing on your web application & apis; create new script file for example ***script.js*** and use below sample code  
 
 
  ```
@@ -35,9 +35,9 @@ Performance & Load Testing your web services is crucial with APIs becoming more 
 
 4. For running multiple users or simultaneous users use ``` k6 run --vus 10 --duration 30s script.js``` this refers to 10 users for the duration of 30 seconds. Add or change numbers based on what you are trying to acheive.
 
-4. Results - are desplayed upon compeletion with requried metrices for users broadly classifed into 2
+4. Results are displayed upon compeletion with required metrices for users broadly classifed into 2
     - As summary statistics, in an end-of-test summary report.
-    - In granular detail, with measurements for every data point across test (and timestamps)
+    - In granular details, with measurements for every data point across test (and timestamps)
 5. Sample Result
     ```
                 k6 run script.js  
